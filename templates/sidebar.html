@@ -1,0 +1,35 @@
+
+<div class="l-navbar" id="nav-bar" style="background: #3167eb !important">
+    <nav class="nav">
+        <div> <a href="#" class="nav_logo"> <i class='nav_logo-icon' style="font-size:40px; margin-top:-10px; margin-left:-5px">M8</i> <span class="nav_logo-name">Motiv8</span> </a>
+            <div class="nav_list"> 
+
+                <a href ="{% url 'landing_page' %}"
+				 class="nav_link {% if 'dashboard' in request.get_full_path %}active{% endif %}"> 
+                    <i class='bx bx-grid-alt nav_icon'></i> 
+                    <span class="nav_name">Dashboard</span> 
+                </a> 
+				<a href ="{% url 'gen_receipt' %}"
+				class="nav_link {% if 'receiptform' in request.get_full_path %}active{% endif %}"> 
+				   <i class='fa-solid fa-add'></i> 
+				   <span class="nav_name">All Receipts</span> 
+			   </a> 
+				<a href ="{% url 'receipts' %}"
+				class="nav_link {% if 'receipts' in request.get_full_path %}active{% endif %}"> 
+				   <i class='fa-solid fa-file'></i> 
+				   <span class="nav_name">All Receipts</span> 
+			   </a> 
+			   <a href ="{% url 'change_password' %}"
+			   class="nav_link {% if 'change' in request.get_full_path %}active{% endif %}"> 
+					<i class="fa-regular fa-user nav_icon"></i>
+				  <span class="nav_name">Change Password</span> 
+			  </a> 
+               
+            </div>
+				
+        
+        </div> 
+		<a href="{% url 'logout' %}" onclick="return confirm('Are you sure you want to logout?')" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
+
+    </nav>
+</div>

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="section-content padding-y mt-40 bg">
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <main class="col-md-6 mt-5">
+            <article class="card card-primary">
+            <header class="card-header">
+                <strong class="d-inline-block mr-2">Create receipt</strong>
+            </header>
+            <div class="card-body">
+                <div class="row">
+                    
+                    <div class="col-md-12">
+                        <form action="{% url 'gen_receipt' %}" method="post">
+                            {% csrf_token %}
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label>{{form.received_from.label}}</label>
+                                    {{form.received_from}}
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label>{{form.amount_in_words.label}}</label>
+                                    {{form.amount_in_words}}
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label>{{form.amount_in_figure.label}}</label>
+                                    {{form.amount_in_figure}}
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label>{{form.payment_for.label}}</label>
+                                    {{form.payment_for}}
+                                </div>
+                                
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-12 d-grid mt-2">
+                                    <input type="submit" class="btn btn-primary btn-block" value="Generate">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div> <!-- row.// -->
+            </div> <!-- card-body .// -->
+            
+            </article> <!-- order-group.// -->
+        </main>
+    </div> <!-- row.// -->
+    </div>
+    
+    
+    </section>
+ 
+{% endblock content %}

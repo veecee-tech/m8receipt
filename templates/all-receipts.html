@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+
+<section class="section-content padding-y bg">
+
+<div class="container">
+	<div class="row padding-y mt-5">
+	
+    <div class="col-md-1"></div>
+	<main class="col-md-10">
+		<article class="card">
+		<header class="card-header bg-primary">
+			<strong class="d-inline-block mr-2">All Receipts</strong>
+		</header>
+		<div class="card-body">
+			<div class="row">
+				
+				<div class="col-md-12">
+					<table class="table table-hover">
+						<thead>
+						  <tr>
+							<th scope="col">Receipt #</th>
+							<th scope="col">Received From</th>
+							<th scope="col">Amount in Figure</th>
+							<th scope="col">Payment For</th>
+                            <th>Date</th>
+							<th scope="col">Action</th>
+						  </tr>
+						</thead>
+						<tbody>
+							{% for receipt in receipts %}
+							
+								<tr class="" style="font-size:12px;color:grey;">
+									
+									<th scope="row">{{ receipt.receipt_no}}</th>
+									<td>{{ receipt.received_from }}</td>
+									<td>{{ receipt.amount_in_figure|intcomma }}</td>
+									<td>{{ receipt.payment_for}}</td>
+									<td>{{ receipt.created_at }}</td>
+                                    <td><a href="{% url 'single_receipt' receipt.id receipt.receipt_no %}" class="btn btn-primary btn-sm">View</a></td>
+								
+							 	</tr>
+							
+							{% endfor %}
+						  
+						 
+						</tbody>
+					  </table>
+				</div>
+				
+			</div> <!-- row.// -->
+		</div> <!-- card-body .// -->
+		
+		</article> <!-- order-group.// -->
+	</main>
+</div> <!-- row.// -->
+</div>
+
+
+</section>
+
+{% endblock content %}

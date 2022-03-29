@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+
+<script>
+    printDivCSS = new String ('<link href="{% static 'bootstrap.css' %}" rel="stylesheet" type="text/css">')
+    function printDiv(divId) {
+        window.frames["print_frame"].document.body.innerHTML=printDivCSS  + document.querySelector('.panel').innerHTML;
+        window.frames["print_frame"].window.focus();
+        window.frames["print_frame"].window.print();
+    }
+</script>
+
+<div class="container" style="margin-top: 50px;">
+    <center><i class="fas fa-check-circle" style="font-size: 72px;margin-bottom: 20px;color: #28A745;"></i></center>
+    <h2 class="text-center">Payment Receipt</h2>
+	<br>
+	<div class="text-center">
+		{% comment %} <a href="{% url 'store' %}" class="btn btn-success">Shop more</a> {% endcomment %}
+	</div>
+</div>
+
+<div class="container" style="margin: 0 auto;width: 50%;padding: 50px;background: #f1f1f1;margin-top: 50px;margin-bottom: 50px;">
+    <div class="row invoice row-printable">
+        <div class="col-md-12">
+            <!-- col-lg-12 start here -->
+            <div class="panel panel-default plain" id="dash_0">
+                <!-- Start .panel -->
+                <div class="panel-body p30">
+                    <div class="row">
+                        <!-- Start .row -->
+                         <!-- Start .row -->
+                         <div class="col-lg-6">
+                            <!-- col-lg-6 start here -->
+                            <div class="invoice-logo"><img src="{% static '/images/motiv8-logo.png' %}" alt="Invoice logo" style="max-height: 40px;"></div>
+                        </div>
+                        <div class="col-lg-6">
+                            <!-- col-lg-6 start here -->
+                            <div class="invoice-from">
+                                <ul class="list-unstyled text-right">
+                                    <li><strong>Invoiced To:</strong></li>
+                                    <li>{{single_receipt.received_from}}</li>
+                                    <li>08132467987</li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                      
+                        <!-- col-lg-6 end here -->
+                        <div class="col-lg-6">
+                            <!-- col-lg-6 start here -->
+                           
+                            <div class="address">
+                                <ul class="list-unstyled text-left" style="font-size:10px; font-style:italic;">
+                                    <li>Motiv8 Technologies LTD</li>
+                                    <li>Opp Emir junction</li>
+                                    <li>Bosso Road, Minna</li>
+                                    <li>Niger State</li>
+                                    <li>08132467987</li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- col-lg-6 end here -->
+                  
+                        <div class="col-lg-12">
+                            <!-- col-lg-12 start here -->
+                            <br>
+                            <div class="invoice-details mt25">
+                                <div class="well">
+                                    <ul class="list-unstyled mb0">
+                                        <li><strong>Receipt </strong> No: {{single_receipt.receipt_no}}</li>
+                                        <li><strong>Date/Time:</strong> {{single_receipt.created_at}}</li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="invoice-items">
+                               <div class="card">
+                                   <div class="card-header bg-primary text-light text-lg text-center">
+                                       Cash Receipt
+                                   </div>
+                                   <div class="card-body">
+                                       <p><strong>Received From: </strong><span style="width: 500px; border-bottom: 1px dotted black;">{{single_receipt.received_from}}</span></p>
+                                       <p><strong>The Sum Of: </strong><span style="border-bottom: 1px dotted black;">{{single_receipt.amount_in_words}} Naira Only</span></p>
+                                       <p><strong>Being Payment For: </strong><span style="border-bottom: 1px dotted black;">{{single_receipt.payment_for}}</span></p>
+                                   </div>
+                                   <div class="card-footer">
+                                    <div>
+                                        <div class="col-md-7"></div>
+                                        <div class="col-md-5" style="border:1px solid grey; font-size:20px">
+                                            N {{single_receipt.amount_in_figure|intcomma}}    :K
+                                        </div>
+                                    </div>
+                                   </div>
+                               </div>
+
+                               
+                            </div>
+                            <div class="invoice-footer mt25">
+                                <p class="text-center">Thank you for learning with us!</p>
+                            </div>
+                        </div>
+                        <!-- col-lg-12 end here -->
+                    </div>
+                    <!-- End .row -->
+                </div>
+            </div>
+            <!-- End .panel -->
+        </div>
+        <!-- col-lg-12 end here -->
+    </div>
+    </div>
+
+    <div class="row col-md-12 text-center">
+        <div class="col-md-6"></div>
+       <a class="btn btn-secondary" href="javascript:printDiv('div1')">Print</a>
+    </div>
+   
+    <iframe name="print_frame" width="0" height="0" frameborder="0" src="about:blank"></iframe>
+
+
+{% endblock %}

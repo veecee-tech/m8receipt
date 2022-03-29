@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+<script>
+    printDivCSS = new String ('<link href="{% static 'style.css' %}" rel="stylesheet" type="text/css">')
+    function printDiv(divId) {
+        window.frames["print_frame"].document.body.innerHTML=printDivCSS  + document.querySelector('.recipt').innerHTML;
+        window.frames["print_frame"].window.focus();
+        window.frames["print_frame"].window.print();
+    }
+</script>
+    <div class=" container recipt col-md-12">
+        <div class="top">
+            <div class="brand">
+                <img src="{% static 'images/motiv8-logo.png' %}" width="100" height="50" alt="">
+            </div>
+            <div class="brand-info">
+                <div class="info">
+                    <div class="svg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="29" viewBox="0 0 30 29">
+                            <g id="Group_44" data-name="Group 44" transform="translate(4014 -11)">
+                              <rect id="Rectangle_33" data-name="Rectangle 33" width="30" height="29" rx="4" transform="translate(-4014 11)"/>
+                              <path id="Icon_material-location-on" data-name="Icon material-location-on" d="M17.1,3a9.413,9.413,0,0,0-9.6,9.222c0,6.917,9.6,17.127,9.6,17.127s9.6-10.21,9.6-17.127A9.413,9.413,0,0,0,17.1,3Zm0,12.516a3.365,3.365,0,0,1-3.43-3.294,3.433,3.433,0,0,1,6.861,0A3.365,3.365,0,0,1,17.1,15.516Z" transform="translate(-4016.017 9.196)" fill="#fff"/>
+                            </g>
+                          </svg>
+                          
+                          
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt accusantium nostrum doloribus.</p>
+                </div>
+                <div class="info">
+                    <div class="svg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="31.5" height="31.5" viewBox="0 0 31.5 31.5">
+                            <path id="Icon_awesome-phone-square-alt" data-name="Icon awesome-phone-square-alt" d="M28.125,2.25H3.375A3.375,3.375,0,0,0,0,5.625v24.75A3.375,3.375,0,0,0,3.375,33.75h24.75A3.375,3.375,0,0,0,31.5,30.375V5.625A3.375,3.375,0,0,0,28.125,2.25ZM26.973,23.862l-1.055,4.57a1.055,1.055,0,0,1-1.027.818A20.392,20.392,0,0,1,4.5,8.859a1.1,1.1,0,0,1,.818-1.027l4.57-1.055a1.282,1.282,0,0,1,.237-.027,1.144,1.144,0,0,1,.97.639L13.2,12.311a1.259,1.259,0,0,1,.085.416,1.2,1.2,0,0,1-.387.816l-2.664,2.18a16.306,16.306,0,0,0,7.789,7.789l2.18-2.664a1.2,1.2,0,0,1,.816-.387,1.255,1.255,0,0,1,.416.085l4.922,2.109a1.143,1.143,0,0,1,.639.97,1.224,1.224,0,0,1-.027.237Z" transform="translate(0 -2.25)"/>
+                          </svg>
+                          
+                    </div>
+                    <p>088328-20390-120</p>
+                </div>
+                <br>
+                <div class="info">
+                    <div class="svg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="24" viewBox="0 0 30 24">
+                            <path id="Icon_material-email" data-name="Icon material-email" d="M30,6H6A3,3,0,0,0,3.015,9L3,27a3.009,3.009,0,0,0,3,3H30a3.009,3.009,0,0,0,3-3V9A3.009,3.009,0,0,0,30,6Zm0,6L18,19.5,6,12V9l12,7.5L30,9Z" transform="translate(-3 -6)"/>
+                          </svg>
+                    </div>
+                    <p>hello@motiv8technologies.com</p>
+                </div>
+            </div>
+        </div>
+        <div class="recipt-details">
+            <div class="cash">
+                Cash Receipt
+            </div>
+            
+           
+            <div class="item w-30" style="display:flex;">Date: 
+                <div class="info" style="margin-left: 5px;">
+                    {{single_receipt.created_at}}
+                </div>
+            </div>
+            <div class="item">Received from:
+                <div class="info">
+                    {{single_receipt.received_from | upper}}
+                </div>
+            </div>
+            <div class="item">The sum of:
+                <div class="info">
+                    {{single_receipt.amount_in_words | upper}} NAIRA ONLY
+                </div>
+            </div>
+            <div class="item">Being paid for:
+                <div class="info">
+                   {{single_receipt.payment_for | upper}}
+                </div>
+            </div>
+
+            <div class="bottom">
+                <div class="amt-num">
+                   N {{single_receipt.amount_in_figure|intcomma}} : K
+                </div>
+                <div class="signature">
+                    Signature
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row col-md-12 text-center">
+        <div class="col-md-6"></div>
+       <a class="btn btn-secondary" href="javascript:printDiv('div1')">Print</a>
+    </div>
+   
+    <iframe name="print_frame" width="0" height="0" frameborder="0" src="about:blank"></iframe>
+
+{% endblock content %}
