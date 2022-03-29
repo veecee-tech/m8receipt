@@ -43,7 +43,7 @@ def single_receipt(request, id, receipt_no):
     context = {
         'single_receipt': single_receipt
     }
-    return render(request, 'index.html', context)
+    return render(request, 'receipt-view.html', context)
 
 
 

@@ -4,7 +4,7 @@
 {% block content %}
 
 <script>
-    printDivCSS = new String ('<link href="{% static 'bootstrap.css' %}" rel="stylesheet" type="text/css">')
+    printDivCSS = new String ('  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet">')
     function printDiv(divId) {
         window.frames["print_frame"].document.body.innerHTML=printDivCSS  + document.querySelector('.panel').innerHTML;
         window.frames["print_frame"].window.focus();
