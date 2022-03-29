@@ -96,7 +96,7 @@ else:
 
 DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
 
-AUTH_USER_MODEL = "authentication.Account"
+# AUTH_USER_MODEL = "authentication.Account"
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
