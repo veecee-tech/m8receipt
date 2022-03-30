@@ -12,6 +12,7 @@ class Receipt(models.Model):
     amount_in_words = models.CharField(max_length=500, blank=False, null=False)
     payment_for = models.CharField(max_length=255, blank=False, null=False)
     amount_in_figure = models.IntegerField()
+    phone =models.CharField(max_length=11, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

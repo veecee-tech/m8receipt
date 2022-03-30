@@ -21,7 +21,7 @@
 	</div>
 </div>
 
-<div class="container" style="margin: 0 auto;width: 50%;padding: 50px;background: #f1f1f1;margin-top: 50px;margin-bottom: 50px;">
+<div class="container col-md-8 col-lg-6" style="margin: 0 auto;padding: 20px;background: #f1f1f1;margin-top: 50px;margin-bottom: 50px;">
     <div class="row invoice row-printable">
         <div class="col-md-12">
             <!-- col-lg-12 start here -->
@@ -31,21 +31,23 @@
                     <div class="row">
                         <!-- Start .row -->
                          <!-- Start .row -->
-                         <div class="col-lg-6">
+                        
+                         <div class="col-sm-6">
                             <!-- col-lg-6 start here -->
                             <div class="invoice-logo"><img src="{% static '/images/motiv8-logo.png' %}" alt="Invoice logo" style="max-height: 40px;"></div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-sm-6">
                             <!-- col-lg-6 start here -->
                             <div class="invoice-from">
                                 <ul class="list-unstyled text-right">
                                     <li><strong>Invoiced To:</strong></li>
                                     <li>{{single_receipt.received_from}}</li>
-                                    <li>08132467987</li>
+                                    <li>{{single_receipt.phone}}</li>
                                     
                                 </ul>
                             </div>
                         </div>
+                  
                       
                         <!-- col-lg-6 end here -->
                         <div class="col-lg-6">
@@ -53,11 +55,13 @@
                            
                             <div class="address">
                                 <ul class="list-unstyled text-left" style="font-size:10px; font-style:italic;">
-                                    <li>Motiv8 Technologies LTD</li>
-                                    <li>Opp Emir junction</li>
-                                    <li>Bosso Road, Minna</li>
-                                    <li>Niger State</li>
-                                    <li>08132467987</li>
+                                    <li>Motiv8 Technologies LTD,</li>
+                                    <li>77, Opposite Emir's Junction,</li>
+                                    <li>Bosso Road,</li>
+                                    <li>Minna. Niger state.</li>
+                                    <li>070000668488</li>
+                                    <li>hello@www.motiv8technologies.com</li>
+                                   
                                     
                                 </ul>
                             </div>
@@ -87,13 +91,21 @@
                                        <p><strong>The Sum Of: </strong><span style="border-bottom: 1px dotted black;">{{single_receipt.amount_in_words}} Naira Only</span></p>
                                        <p><strong>Being Payment For: </strong><span style="border-bottom: 1px dotted black;">{{single_receipt.payment_for}}</span></p>
                                    </div>
-                                   <div class="card-footer">
-                                    <div>
-                                        <div class="col-md-7"></div>
-                                        <div class="col-md-5" style="border:1px solid grey; font-size:20px">
+                                   <div class="card-footer col-sm-12" style="display:flex; justify-content: space-between;padding: 15px;">
+                                   
+                                        
+                                        <div class="col-sm-5" style="border:1px solid grey; font-size:20px; max-width:fit-content">
                                             N {{single_receipt.amount_in_figure|intcomma}}    :K
                                         </div>
-                                    </div>
+
+                                        {% comment %} <div class="col-sm-3"></div> {% endcomment %}
+                                        <div class="col-sm-4" style="max-width: 200px;">
+                                            <div class="text text-center">
+                                                signature and stamp
+                                            </div>
+                                            <hr>
+                                        </div>
+                                    
                                    </div>
                                </div>
 
